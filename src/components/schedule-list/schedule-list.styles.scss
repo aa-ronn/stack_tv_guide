@@ -1,0 +1,96 @@
+@import "../../consts";
+
+.schedule-list {
+  font-family: "Roboto", sans-serif;
+  margin: 1rem;
+
+  .loading {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .channel-name {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 0rem 1rem;
+  }
+
+  .date-info {
+    padding: 1rem;
+    padding-top: 1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  hr {
+    margin: 0;
+    outline: none;
+    background-color: $bg-black;
+    border: none;
+    height: 1px;
+    width: 50%;
+    margin: auto;
+  }
+
+  .navigation-buttons {
+    min-height: 1rem;
+    display: flex;
+    justify-content: center;
+
+    &:first-child {
+      button {
+        margin-right: 2rem;
+      }
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: $black;
+      font-weight: 700;
+      font-size: 1.5rem;
+      width: fit-content;
+      color: $white;
+
+      .green {
+        color: $green;
+      }
+    }
+  }
+
+  .show-block {
+    .show-block-details {
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+
+      .time-info {
+        min-width: 70px;
+        padding: 1rem;
+        text-align: center;
+      }
+      .show-info {
+        padding: 1rem;
+        flex-direction: column;
+
+        .show-title {
+          font-weight: 700;
+        }
+
+        .episode-title {
+          font-weight: 300;
+        }
+      }
+    }
+    &:last-child {
+      hr {
+        display: none;
+      }
+      .time-info {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}

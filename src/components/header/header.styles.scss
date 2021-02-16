@@ -1,0 +1,20 @@
+@import "../../consts";
+
+.header {
+  background-color: $black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: $white;
+
+  .title {
+    padding-left: 1rem;
+    margin: 0.5rem;
+    margin-left: 1rem;
+
+    .green {
+      color: $green;
+    }
+  }
+}
