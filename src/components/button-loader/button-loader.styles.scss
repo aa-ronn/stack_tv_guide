@@ -1,0 +1,41 @@
+@import "../../consts";
+
+.button-wrapper {
+  @include button-main;
+  overflow: hidden;
+  .signin-google {
+    @include button-google();
+  }
+
+  &.highlight {
+    animation: background-animation 1s infinite ease-in-out;
+    animation-direction: alternate;
+    animation-delay: 300ms;
+
+    button {
+      &:focus {
+        box-shadow: none;
+      }
+      &:hover {
+        color: $white;
+      }
+      &.signin-google {
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  @keyframes background-animation {
+    from {
+      background-color: $white;
+      // outline: 0px solid black;
+    }
+    to {
+      // background-color: rgba(218, 165, 32, 0.603);
+      background-color: $black;
+      // outline: 3px solid black;
+    }
+  }
+}

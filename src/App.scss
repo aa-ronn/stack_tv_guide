@@ -1,4 +1,10 @@
 .App {
   width: auto;
   height: auto;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+  }
 }

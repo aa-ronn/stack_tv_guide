@@ -1,4 +1,5 @@
 import "./schedule-list.styles.scss";
+import { Spinner } from "../spinner/spinner.component";
 
 import { useState, useEffect } from "react";
 import {
@@ -15,7 +16,7 @@ const ScheduleList = () => {
 
   useEffect(() => {
     const setup = async () => {
-      await getChannelSchedule("global").then((channel) => {
+      await getChannelSchedule("teletoon").then((channel) => {
         setChannel(channel);
       });
     };
@@ -64,38 +65,55 @@ const ScheduleList = () => {
   if (day === null) {
     return (
       <div className="schedule-list">
-        <div className="channel-name">{channel?.name}</div>
-        <div className="loading">Loading...</div>
+        <div className="loading">
+          <Spinner isLoading={true} />
+        </div>
       </div>
     );
   } else {
     return (
-      <div className="schedule-list">
-        <div className="channel-name">{channel?.name}</div>
-        <div className="date-info">{day.date}</div>
-        <div className="navigation-buttons">
-          <button name="-" onClick={handleDayNavigation}>
-            <span className="green">{"<"}</span>
-          </button>
-          <button name="+" onClick={handleDayNavigation}>
-            <span className="green">{">"}</span>
-          </button>
-        </div>
-        {day.schedule.map((details, index) => {
-          return (
-            <div key={index} className="show-block">
-              <div className="show-block-details">
-                <div className="time-info">
-                  {details.time_of_day} {details.am_pm}
-                </div>
-                <div className="show-info">
-                  <div className="show-title">{details.show_title}</div>
-                  <div className="episode-title">{details.episode_title}</div>
-                </div>
-              </div>
+      <div className="schedule-list-wrapper">
+        <div className="schedule-list">
+          <div className="channel-name">{channel?.name}</div>
+          <div className="date-info">{day.date}</div>
+          <div className="button-wrapper">
+            <div className="floating-button-left">
+              <button
+                name="-"
+                onClick={handleDayNavigation}
+                className="floating-sticky"
+              >
+                <span className="arrow-left"></span>
+              </button>
             </div>
-          );
-        })}
+            <div className="floating-button-right">
+              <button
+                name="+"
+                onClick={handleDayNavigation}
+                className="floating-sticky"
+              >
+                <span className="arrow-right"></span>
+              </button>
+            </div>
+          </div>
+
+          {day.schedule.map((details, index) => {
+            return (
+              <div key={index} className="show-block">
+                <div className="show-block-details">
+                  <div className="time-info">
+                    {details.time_of_day} {details.am_pm}
+                  </div>
+                  <div className="show-info">
+                    <div className="show-title">{details.show_title}</div>
+                    <div className="episode-title">{details.episode_title}</div>
+                  </div>
+                </div>
+                <div className="divider" />
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

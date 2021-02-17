@@ -11,22 +11,10 @@ const config = {
   storageBucket: "stack-tv-guide.appspot.com",
   messagingSenderId: "474677366292",
   appId: "1:474677366292:web:c1f55f148d9be5111b2101",
-  measurementId: "G-GMXBNBL4SL"
+  measurementId: "G-GMXBNBL4SL",
 };
 
 firebase.initializeApp(config);
-
-export const getCurrentUser = () => {
-  return new Promise((resolve, reject) => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((userAuth) => {
-      unsubscribe();
-      resolve(userAuth);
-    }, reject);
-  });
-};
-
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export class TimeSlotDetails {
   am_pm: string;
@@ -51,10 +39,7 @@ export class DaySchedule {
   date: string;
   schedule: TimeSlotDetails[];
 
-  constructor(
-    date: string,
-    schedule: TimeSlotDetails[]
-  ) {
+  constructor(date: string, schedule: TimeSlotDetails[]) {
     this.date = date;
     this.schedule = schedule;
   }
@@ -64,10 +49,7 @@ export class Channel {
   name: string;
   dates_and_schedules: DaySchedule[];
 
-  constructor(
-    name: string,
-    dates_and_schedules: DaySchedule[]
-  ) {
+  constructor(name: string, dates_and_schedules: DaySchedule[]) {
     this.name = name;
     this.dates_and_schedules = dates_and_schedules;
   }
@@ -84,21 +66,18 @@ export const getChannelSchedule = (channel: string): Promise<Channel> =>
       toFirestore: (sched: Channel) => {
         return {
           name: sched.name,
-          dates_and_schedules: sched.dates_and_schedules
+          dates_and_schedules: sched.dates_and_schedules,
         };
       },
       fromFirestore: function (snapshot: any, options: any) {
         const data = snapshot.data(options);
-        return new Channel(
-          data.name,
-          data.dates_and_schedules
-        );
+        return new Channel(data.name, data.dates_and_schedules);
       },
     };
 
     firebase
       .firestore()
-      .collection('channels')
+      .collection("channels")
       .doc(channel)
       .withConverter(dataConverter)
       .get()
@@ -119,34 +98,4 @@ export const getChannelSchedule = (channel: string): Promise<Channel> =>
       });
   });
 
-  export const sendEmailLink = () => {
-    const email = "jp.stanley82@gmail.com";
-    const actionCodeSettings = {
-      // URL you want to redirect back to. The domain (www.example.com) for this
-      // URL must be in the authorized domains list in the Firebase Console.
-      url: "http://localhost:3000/emailLink",
-      // This must be true.
-      handleCodeInApp: true,
-      //dynamicLinkDomain: 'etp-estate-admin.firebaseapp.com'
-    };
-
-    firebase
-      .auth()
-      .sendSignInLinkToEmail(email, actionCodeSettings)
-      .then(() => {
-        // The link was successfully sent. Inform the user.
-        // Save the email locally so you don't need to ask the user for it again
-        // if they open the link on the same device.
-        window.localStorage.setItem("emailForSignIn", email);
-        // ...
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode + " " + errorMessage);
-      });
-
-  }
-
-  
 export default firebase;

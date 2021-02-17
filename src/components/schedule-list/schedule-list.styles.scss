@@ -1,95 +1,178 @@
 @import "../../consts";
 
-.schedule-list {
-  font-family: "Roboto", sans-serif;
-  margin: 1rem;
+.schedule-list-wrapper {
+  max-width: 1200px;
 
-  .loading {
-    font-size: 1rem;
-    padding: 1rem 2rem;
-  }
-
-  .channel-name {
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    text-transform: capitalize;
-    padding: 0rem 1rem;
-  }
-
-  .date-info {
-    padding: 1rem;
-    padding-top: 1rem;
-    font-weight: 700;
-    font-size: 1.5rem;
-    text-align: center;
-  }
-
-  hr {
-    margin: 0;
-    outline: none;
-    background-color: $bg-black;
-    border: none;
-    height: 1px;
-    width: 50%;
-    margin: auto;
-  }
-
-  .navigation-buttons {
-    min-height: 1rem;
+  .schedule-list {
+    font-family: "Roboto", sans-serif;
+    margin: 1rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    color: $white;
 
-    &:first-child {
-      button {
-        margin-right: 2rem;
-      }
+    .loading {
+      display: grid;
+      justify-content: center;
+      @include title-font();
+      text-transform: capitalize;
+      padding: 1rem;
     }
 
-    button {
-      padding: 0.5rem 1rem;
-      background-color: $black;
-      font-weight: 700;
-      font-size: 1.5rem;
-      width: fit-content;
-      color: $white;
-
-      .green {
-        color: $green;
-      }
+    .channel-name {
+      @include title-font();
+      text-transform: capitalize;
+      padding: 0rem 1rem;
     }
-  }
 
-  .show-block {
-    .show-block-details {
-      width: fit-content;
+    .date-info {
+      padding: 1rem 1rem 0rem 1rem;
+      @include sub-title-font();
+    }
+
+    hr {
+      margin: 0;
+      outline: none;
+      background-color: $white;
+      border: none;
+      height: 1px;
+      width: 50%;
+      margin: auto;
+    }
+
+    @include button-main();
+
+    .button-wrapper {
+      position: sticky;
+      width: 100%;
+      height: 4rem;
       display: flex;
-      flex-direction: row;
+      justify-content: space-between;
+      top: 80%;
+      animation: slide-apart 200ms ease;
 
-      .time-info {
-        min-width: 70px;
-        padding: 1rem;
-        text-align: center;
-      }
-      .show-info {
-        padding: 1rem;
-        flex-direction: column;
-
-        .show-title {
-          font-weight: 700;
+      @keyframes slide-apart {
+        from {
+          width: 0;
+          opacity: 0;
         }
+        to {
+          width: 100%;
+          opacity: 1;
+        }
+      }
 
-        .episode-title {
-          font-weight: 300;
+      .floating-button-left {
+        height: 100%;
+        width: 4rem;
+
+        button {
+          left: -100px;
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          background-color: $white;
+          @include title-font();
+          color: $white;
+          display: grid;
+          justify-content: center;
+
+          @include arrow-left;
+          @include arrow-right;
+
+          &:hover {
+            .arrow-left {
+              border-right: 1rem solid $black;
+            }
+            .arrow-right {
+              border-left: 1rem solid $black;
+            }
+            background-color: $green;
+          }
+
+          &.floating-sticky {
+            position: sticky;
+          }
+        }
+      }
+
+      .floating-button-right {
+        margin-right: 1rem;
+        height: 100%;
+        width: 4rem;
+
+        button {
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          background-color: $white;
+          @include title-font();
+          color: $white;
+          display: grid;
+          justify-content: center;
+
+          @include arrow-left;
+          @include arrow-right;
+
+          &:hover {
+            .arrow-left {
+              border-right: 1rem solid $black;
+            }
+            .arrow-right {
+              border-left: 1rem solid $black;
+            }
+            background-color: $green;
+          }
+
+          &.floating-sticky {
+            position: sticky;
+          }
         }
       }
     }
-    &:last-child {
-      hr {
-        display: none;
+
+    .show-block {
+      @include reading-font();
+      max-width: 600px;
+
+      .show-block-details {
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+
+        .time-info {
+          min-width: 70px;
+          padding: 1rem;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+        }
+        .show-info {
+          padding: 1rem;
+          flex-direction: column;
+
+          .show-title {
+            font-weight: 700;
+          }
+
+          .episode-title {
+            font-weight: 300;
+          }
+        }
       }
-      .time-info {
-        margin-bottom: 3rem;
+      &:last-child {
+        hr {
+          display: none;
+        }
+        .time-info {
+          margin-bottom: 3rem;
+        }
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        background-color: $bg-black;
       }
     }
   }

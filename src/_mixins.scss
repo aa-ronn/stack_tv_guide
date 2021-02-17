@@ -1,0 +1,105 @@
+@import "./colors";
+
+@mixin button-main {
+  button {
+    width: fit-content;
+    min-height: 44px;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 0.5rem;
+    margin: 0.2rem 0.2rem;
+    border: 1px solid $black;
+    background-color: $white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 200ms ease;
+
+    &:hover {
+      background-color: $green;
+      border: 1px solid $black;
+      color: $white;
+      transition: all 200ms ease;
+    }
+
+    &:active {
+      transform: scale(0.98);
+      background-color: $green-d;
+      color: $white;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 1px $white, 0 0 0 3px $green;
+    }
+  }
+}
+
+@mixin button-google {
+  &:hover {
+    background-color: $blue;
+  }
+  &:active {
+    background-color: $blue-d;
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px $white, 0 0 0 4px $btn-blue;
+  }
+}
+
+@mixin loader {
+  .loader {
+    margin-right: 5px;
+    position: relative;
+    left: 0px;
+    transition: left 300ms ease-in;
+    border: 0.4rem solid $green;
+    border-radius: 50%;
+    border-top: 0.4rem solid $black;
+    width: 0.7rem;
+    height: 0.71rem;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@mixin arrow-left {
+  .arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 0.5rem solid transparent;
+    border-right: 1rem solid $green;
+    border-bottom: 0.5rem solid transparent;
+    margin-right: 5px;
+  }
+}
+
+@mixin arrow-right {
+  .arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 0.5rem solid transparent;
+    border-left: 1rem solid $green;
+    border-bottom: 0.5rem solid transparent;
+    margin-left: 5px;
+  }
+}
