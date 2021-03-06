@@ -1,10 +1,10 @@
-@import "../../consts";
+@use "../../consts" as c;
 
 .button-wrapper {
-  @include button-main;
+  @include c.button-main;
   overflow: hidden;
   .signin-google {
-    @include button-google();
+    @include c.button-google;
   }
 
   &.highlight {
@@ -17,11 +17,11 @@
         box-shadow: none;
       }
       &:hover {
-        color: $white;
+        color: c.$white;
       }
       &.signin-google {
         &:hover {
-          color: $white;
+          color: c.$white;
         }
       }
     }
@@ -29,12 +29,12 @@
 
   @keyframes background-animation {
     from {
-      background-color: $white;
+      background-color: c.$white;
       // outline: 0px solid black;
     }
     to {
       // background-color: rgba(218, 165, 32, 0.603);
-      background-color: $black;
+      background-color: c.$black;
       // outline: 3px solid black;
     }
   }

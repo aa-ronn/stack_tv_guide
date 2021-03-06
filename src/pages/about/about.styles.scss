@@ -1,0 +1,15 @@
+@use "../../consts" as c;
+
+.about {
+  padding: 1rem;
+  .title {
+    @include c.title-font;
+    color: c.$white;
+    margin-bottom: 1rem;
+  }
+
+  .info {
+    @include c.reading-font;
+    color: c.$white;
+  }
+}

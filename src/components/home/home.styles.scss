@@ -1,0 +1,30 @@
+@use "../../consts" as c;
+
+.home {
+  max-width: 1200px;
+
+  .home-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+    background-color: c.$black;
+    color: c.$white;
+    margin: 1rem;
+
+    .grid-item {
+      @include c.reading-font;
+      border: 1px solid c.$bg-black;
+      max-width: 8rem;
+      height: 8rem;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+
+      &:hover {
+        background-color: c.$bg-black;
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@use "../../consts" as c;
+
+.modal-content {
+  z-index: 100;
+  position: fixed;
+  height: 3.5rem;
+  width: 300px;
+  max-width: 60%;
+  top: 10rem;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: c.$white;
+  border: 1px solid c.$bg-black;
+  border-radius: 20px;
+  text-align: center;
+
+  &.hide {
+    left: -500px;
+  }
+
+  &.show {
+    animation: slideIn 300ms ease;
+    top: 10rem;
+  }
+
+  @keyframes slideIn {
+    from {
+      left: -500px;
+    }
+    to {
+      left: 1rem;
+    }
+  }
+
+  .button {
+    cursor: pointer;
+  }
+
+  .modal-header,
+  .modal-footer {
+    padding: 0.5rem;
+    height: fit-content;
+    color: white;
+    &.success {
+      background-color: c.$green;
+    }
+    &.warning {
+      background-color: #e29b01;
+    }
+    &.alert {
+      background-color: #b11506;
+    }
+  }
+
+  /* Modal Body */
+  .modal-body {
+    font-size: 1rem;
+    margin: 0px;
+  }
+
+  .title,
+  .action {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .action {
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0px;
+    @include c.reading-font;
+    font-size: 1rem;
+  }
+}

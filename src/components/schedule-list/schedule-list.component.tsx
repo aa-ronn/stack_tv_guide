@@ -1,82 +1,60 @@
+import { useContext } from "react";
 import "./schedule-list.styles.scss";
 import { Spinner } from "../spinner/spinner.component";
+import { useParams } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-import {
-  getChannelSchedule,
-  Channel,
-  DaySchedule,
-} from "../../firebase/firebase.utils";
+import { useEffect, FC } from "react";
+import { AppContext } from "../../contexts/app/app.context";
 
-const ScheduleList = () => {
-  const [channel, setChannel] = useState<Channel | null>(null);
-  const [day, setDay] = useState<DaySchedule | null>(null);
-  const [dayIndex, setDayIndex] = useState(0);
-  const [indexLength, setIndexLength] = useState(0);
+interface IParams {
+  channelName: string;
+}
+
+const ScheduleList: FC = () => {
+  const params = useParams<IParams>();
+  const { day, traverseScheduleDay, menuOpen, setupSchedulePage } = useContext(
+    AppContext
+  );
 
   useEffect(() => {
-    const setup = async () => {
-      await getChannelSchedule("teletoon").then((channel) => {
-        setChannel(channel);
-      });
+    const firstLoad = () => {
+      //TODO Get this useEffect to only call one time legally
+      console.log("Loaded - " + params.channelName);
+      setupSchedulePage(params.channelName);
     };
 
-    // if first time loading component get schedule data
-    if (channel === null) {
-      setup();
-    } else {
-      if (day === null) {
-        console.log("date check");
-        if (channel != null) {
-          const today = new Date();
-          setIndexLength(channel?.dates_and_schedules.length);
-          for (let index = 0; index < indexLength; index++) {
-            const day = channel?.dates_and_schedules[index];
-            const dayDate = new Date(day.date);
-            if (dayDate.toDateString() === today.toDateString()) {
-              setDay(day);
-              setDayIndex(index);
-              break;
-            }
-          }
-        }
-      } else {
-        // otherwise traverse channel schedule array
-        setDay(channel.dates_and_schedules[dayIndex]);
-      }
-    }
-  }, [dayIndex, channel, day, indexLength]);
+    firstLoad();
+
+    return () => {};
+  }, [params.channelName]);
 
   const handleDayNavigation = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const name = event.currentTarget.name;
-    if (name === "+") {
-      if (dayIndex + 1 <= indexLength - 1) {
-        setDayIndex(dayIndex + 1);
-      }
-    } else {
-      if (dayIndex - 1 >= 0) {
-        setDayIndex(dayIndex - 1);
-      }
-    }
+    traverseScheduleDay(name);
   };
 
   if (day === null) {
     return (
       <div className="schedule-list">
         <div className="loading">
-          <Spinner isLoading={true} />
+          <div className={`channel-name ${menuOpen ? "hidden" : ""}`}>
+            {params?.channelName}
+          </div>
+          {menuOpen ? null : <Spinner isLoading={true} />}
         </div>
       </div>
     );
   } else {
     return (
-      <div className="schedule-list-wrapper">
+      <div className={`schedule-list-wrapper`}>
         <div className="schedule-list">
-          <div className="channel-name">{channel?.name}</div>
-          <div className="date-info">{day.date}</div>
-          <div className="button-wrapper">
+          <div className={`channel-date-wrapper ${menuOpen ? "hidden" : ""}`}>
+            <div className="channel-name">{params?.channelName}</div>
+            <div className="date-info">{day?.date}</div>
+          </div>
+          <div className={`button-wrapper ${menuOpen ? "hidden" : ""}`}>
             <div className="floating-button-left">
               <button
                 name="-"
@@ -97,7 +75,7 @@ const ScheduleList = () => {
             </div>
           </div>
 
-          {day.schedule.map((details, index) => {
+          {day?.schedule.map((details, index) => {
             return (
               <div key={index} className="show-block">
                 <div className="show-block-details">

@@ -1,0 +1,35 @@
+@use "./media";
+
+$title-font-size: 2rem;
+$subtitle-font-size: 1.5rem;
+$reading-font-size: 1.25rem;
+
+@mixin title-font {
+  font-size: $title-font-size;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+@mixin sub-title-font {
+  font-size: $subtitle-font-size;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+@mixin reading-font {
+  font-size: $reading-font-size;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+@mixin sub-reading-font {
+  @include reading-font();
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+// @media (max-width: media.$mobile) {
+//   html {
+//     font-size: 14px;
+//   }
+// }

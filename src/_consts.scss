@@ -1,3 +1,4 @@
-@import "./colors";
-@import "./mixins";
-@import "./font"
+@forward "./colors";
+@forward "./mixins";
+@forward "./fonts";
+@forward "./media";

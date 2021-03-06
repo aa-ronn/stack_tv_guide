@@ -1,4 +1,4 @@
-@import "./colors";
+@use "../../colors" as c;
 
 @mixin button-main {
   button {
@@ -10,40 +10,36 @@
     align-items: center;
     padding: 0.5rem 0.5rem;
     margin: 0.2rem 0.2rem;
-    border: 1px solid $black;
-    background-color: $white;
+    border: 1px solid c.$black;
+    background-color: c.$white;
     font-weight: bold;
     font-size: 1rem;
     transition: all 200ms ease;
 
     &:hover {
-      background-color: $green;
-      border: 1px solid $black;
-      color: $white;
+      background-color: c.$green;
+      border: 1px solid c.$black;
+      color: c.$white;
       transition: all 200ms ease;
     }
 
     &:active {
       transform: scale(0.98);
-      background-color: $green-d;
-      color: $white;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 1px $white, 0 0 0 3px $green;
+      background-color: c.$green-d;
+      color: c.$white;
     }
   }
 }
 
 @mixin button-google {
   &:hover {
-    background-color: $blue;
+    background-color: c.$blue;
   }
   &:active {
-    background-color: $blue-d;
+    background-color: c.$blue-d;
   }
   &:focus {
-    box-shadow: 0 0 0 2px $white, 0 0 0 4px $btn-blue;
+    box-shadow: 0 0 0 2px c.$white, 0 0 0 4px $btn-blue;
   }
 }
 
@@ -53,9 +49,9 @@
     position: relative;
     left: 0px;
     transition: left 300ms ease-in;
-    border: 0.4rem solid $green;
+    border: 0.4rem solid c.$green;
     border-radius: 50%;
-    border-top: 0.4rem solid $black;
+    border-top: 0.4rem solid c.$black;
     width: 0.7rem;
     height: 0.71rem;
     -webkit-animation: spin 1s linear infinite; /* Safari */
@@ -87,7 +83,7 @@
     width: 0;
     height: 0;
     border-top: 0.5rem solid transparent;
-    border-right: 1rem solid $green;
+    border-right: 1rem solid c.$black;
     border-bottom: 0.5rem solid transparent;
     margin-right: 5px;
   }
@@ -98,8 +94,32 @@
     width: 0;
     height: 0;
     border-top: 0.5rem solid transparent;
-    border-left: 1rem solid $green;
+    border-left: 1rem solid c.$black;
     border-bottom: 0.5rem solid transparent;
     margin-left: 5px;
+  }
+}
+
+@mixin scrollable {
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 3px; /* width of the entire scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: c.$bg-black; /* color of the tracking area */
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: c.$green; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: c.$green-d;
+    }
   }
 }

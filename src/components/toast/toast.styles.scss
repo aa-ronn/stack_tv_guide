@@ -1,0 +1,81 @@
+@use "../../consts" as c;
+
+.toast-content {
+  z-index: 100;
+  position: fixed;
+  height: 3.5rem;
+  width: 300px;
+  max-width: 60%;
+  top: 5rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: c.$white;
+  border: 1px solid c.$black;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  @include c.reading-font;
+
+  &.hide {
+    right: -500px;
+  }
+
+  &.show {
+    animation: slideIn 300ms ease;
+    top: 4rem;
+  }
+
+  @keyframes slideIn {
+    from {
+      right: -500px;
+    }
+    to {
+      right: 1rem;
+    }
+  }
+
+  .button {
+    cursor: pointer;
+  }
+
+  .toast-flag--and-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .toast-flag {
+      width: 1rem;
+      height: 4rem;
+
+      &.success {
+        background-color: c.$green;
+      }
+      &.fail {
+        background-color: c.$red;
+      }
+    }
+
+    .action {
+      height: 3.5rem;
+      padding-right: 1rem;
+      font-size: 2rem;
+      cursor: pointer;
+      &:hover {
+        color: c.$bg-black;
+      }
+    }
+  }
+
+  .toast-body {
+    padding-left: 1rem;
+    font-size: 1rem;
+    margin: 0px;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

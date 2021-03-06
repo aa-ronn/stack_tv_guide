@@ -1,67 +1,98 @@
-@import "../../consts";
+@use "../../consts" as c;
 
 .schedule-list-wrapper {
   max-width: 1200px;
+  opacity: 1;
+  transition: opacity 1000ms ease;
+
+  &.hidden {
+    opacity: 0;
+    transition: opacity 1000ms ease;
+  }
 
   .schedule-list {
     font-family: "Roboto", sans-serif;
-    margin: 1rem;
     display: flex;
     flex-direction: column;
-    color: $white;
+    color: c.$white;
 
     .loading {
       display: grid;
       justify-content: center;
-      @include title-font();
+      @include c.title-font;
       text-transform: capitalize;
       padding: 1rem;
     }
 
-    .channel-name {
-      @include title-font();
-      text-transform: capitalize;
-      padding: 0rem 1rem;
-    }
+    .channel-date-wrapper {
+      z-index: 1;
+      top: 3rem;
+      padding-top: 1rem;
+      height: 6rem;
+      position: sticky;
+      background-color: c.$black;
+      opacity: 1;
+      transition: opacity 600ms ease;
 
-    .date-info {
-      padding: 1rem 1rem 0rem 1rem;
-      @include sub-title-font();
+      .channel-name {
+        @include c.title-font;
+        text-transform: capitalize;
+        padding: 0rem 1rem;
+      }
+
+      .date-info {
+        padding: 1rem 1rem 0rem 1rem;
+        @include c.sub-title-font;
+      }
+
+      &.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
     hr {
       margin: 0;
       outline: none;
-      background-color: $white;
+      background-color: c.$white;
       border: none;
       height: 1px;
       width: 50%;
       margin: auto;
     }
 
-    @include button-main();
+    @include c.button-main;
 
     .button-wrapper {
       position: sticky;
       width: 100%;
       height: 4rem;
       display: flex;
-      justify-content: space-between;
       top: 80%;
-      animation: slide-apart 200ms ease;
+      justify-content: space-between;
+      opacity: 1;
+      transition: opacity 300ms ease;
+
+      animation: slide-apart 300ms ease;
 
       @keyframes slide-apart {
         from {
-          width: 0;
+          top: 100%;
           opacity: 0;
         }
         to {
-          width: 100%;
+          top: 80%;
           opacity: 1;
         }
       }
 
+      &.hidden {
+        opacity: 0;
+        transition: opacity 300ms ease;
+      }
+
       .floating-button-left {
+        margin-left: 1rem;
         height: 100%;
         width: 4rem;
 
@@ -70,23 +101,17 @@
           height: 100%;
           width: 100%;
           border-radius: 50%;
-          background-color: $white;
-          @include title-font();
-          color: $white;
+          background-color: c.$green;
+          @include c.title-font;
+          color: c.$white;
           display: grid;
           justify-content: center;
 
-          @include arrow-left;
-          @include arrow-right;
+          @include c.arrow-left;
+          @include c.arrow-right;
 
           &:hover {
-            .arrow-left {
-              border-right: 1rem solid $black;
-            }
-            .arrow-right {
-              border-left: 1rem solid $black;
-            }
-            background-color: $green;
+            background-color: c.$white;
           }
 
           &.floating-sticky {
@@ -104,23 +129,17 @@
           height: 100%;
           width: 100%;
           border-radius: 50%;
-          background-color: $white;
-          @include title-font();
-          color: $white;
+          background-color: c.$green;
+          @include c.title-font;
+          color: c.$white;
           display: grid;
           justify-content: center;
 
-          @include arrow-left;
-          @include arrow-right;
+          @include c.arrow-left;
+          @include c.arrow-right;
 
           &:hover {
-            .arrow-left {
-              border-right: 1rem solid $black;
-            }
-            .arrow-right {
-              border-left: 1rem solid $black;
-            }
-            background-color: $green;
+            background-color: c.$white;
           }
 
           &.floating-sticky {
@@ -131,11 +150,12 @@
     }
 
     .show-block {
-      @include reading-font();
-      max-width: 600px;
+      margin-left: 20%;
+      transition: margin 300ms ease;
+      @include c.reading-font;
 
       .show-block-details {
-        width: fit-content;
+        max-width: 100%;
         display: flex;
         flex-direction: row;
 
@@ -172,7 +192,20 @@
       .divider {
         width: 100%;
         height: 1px;
-        background-color: $bg-black;
+        background-color: c.$bg-black;
+      }
+    }
+  }
+}
+
+@media (max-width: c.$tablet) {
+  .schedule-list-wrapper {
+    max-width: 1200px;
+
+    .schedule-list {
+      .show-block {
+        margin: 0%;
+        transition: margin 300ms ease;
       }
     }
   }
