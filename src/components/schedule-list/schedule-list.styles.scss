@@ -2,8 +2,13 @@
 
 .schedule-list-wrapper {
   max-width: 800px;
+  min-width: 800px;
   opacity: 1;
   transition: opacity 1000ms ease;
+
+  @media (max-width: c.$tablet) {
+    min-width: 100%;
+  }
 
   &.hidden {
     opacity: 0;
@@ -200,12 +205,8 @@
       }
     }
   }
-}
 
-@media (max-width: c.$tablet) {
-  .schedule-list-wrapper {
-    max-width: 1200px;
-
+  @media (max-width: c.$mobile) {
     .schedule-list {
       .show-block {
         margin: 0%;
