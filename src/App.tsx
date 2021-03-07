@@ -4,7 +4,7 @@ import "./App.scss";
 import { AppProvider } from "./contexts/app/app.context";
 import ScheduleList from "./components/schedule-list/schedule-list.component";
 import Header from "./components/header/header.component";
-import Home from "./components/home/home.component";
+import Home from "./pages/home/home.component";
 import About from "./pages/about/about.page";
 
 function App() {

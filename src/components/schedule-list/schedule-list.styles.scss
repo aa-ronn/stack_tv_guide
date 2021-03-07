@@ -1,7 +1,7 @@
 @use "../../consts" as c;
 
 .schedule-list-wrapper {
-  max-width: 1200px;
+  max-width: 800px;
   opacity: 1;
   transition: opacity 1000ms ease;
 
@@ -15,24 +15,27 @@
     display: flex;
     flex-direction: column;
     color: c.$white;
+    margin-top: -4rem;
 
     .loading {
-      display: grid;
+      display: flex;
       justify-content: center;
+      align-content: center;
+      margin: 0;
       @include c.title-font;
       text-transform: capitalize;
       padding: 1rem;
     }
 
     .channel-date-wrapper {
-      z-index: 1;
       top: 3rem;
       padding-top: 1rem;
+      padding-bottom: 1rem;
       height: 6rem;
       position: sticky;
       background-color: c.$black;
       opacity: 1;
-      transition: opacity 600ms ease;
+      transition: opacity 300ms ease 400ms;
 
       .channel-name {
         @include c.title-font;
@@ -47,7 +50,8 @@
 
       &.hidden {
         opacity: 0;
-        visibility: hidden;
+        transition: opacity 300ms ease;
+        z-index: -1;
       }
     }
 

@@ -17,6 +17,8 @@
   border-radius: 10px;
   text-align: center;
   overflow: hidden;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   @include c.reading-font;
 
   &.hide {
@@ -48,7 +50,7 @@
 
     .toast-flag {
       width: 1rem;
-      height: 4rem;
+      height: 6rem;
 
       &.success {
         background-color: c.$green;
@@ -61,6 +63,7 @@
     .action {
       height: 3.5rem;
       padding-right: 1rem;
+      padding-left: 1rem;
       font-size: 2rem;
       cursor: pointer;
       &:hover {
