@@ -13,13 +13,17 @@
   .title {
     @include c.title-font;
     padding-left: 1rem;
-    margin: 0.5rem;
-    margin-left: 1rem;
+    margin: 0.7rem 0.5rem 0.5rem 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    z-index: 3;
+    z-index: 101;
     cursor: pointer;
+    background-color: c.$bg-black;
+
+    @media (max-width: c.$mobile) {
+      margin: 1.25rem 0.5rem 0.5rem 1rem;
+    }
 
     .green {
       color: c.$green;
@@ -39,6 +43,7 @@
       &.open {
         max-width: 90px;
         transition: max-width 0.2s;
+        position: static;
         &:after {
           transition: opacity 0.2s;
           opacity: 1;
@@ -63,9 +68,11 @@
     position: relative;
     top: 0.9rem;
     left: 1rem;
-    z-index: 1;
+    z-index: 100;
     -webkit-user-select: none;
     user-select: none;
+    background-color: c.$bg-black;
+
     a {
       text-decoration: none;
       color: c.$green;
@@ -74,6 +81,7 @@
         color: tomato;
       }
     }
+
     input {
       display: block;
       width: 40px;
@@ -83,8 +91,10 @@
       left: -5px;
       cursor: pointer;
       opacity: 0;
-      z-index: 2;
+      z-index: 100;
       -webkit-touch-callout: none;
+      background-color: c.$bg-black;
+
       &.open {
         ~ {
           span {
@@ -103,12 +113,13 @@
             transform: none;
             li {
               cursor: pointer;
-              padding-left: 1rem;
               transition: padding-left 200ms ease;
+
               &:hover {
                 background-color: c.$bg-black;
-                padding-left: 2rem;
+                padding-left: 3rem;
                 transition: padding-left 200ms ease;
+                border-left: 1px solid c.$green;
               }
             }
           }
@@ -124,7 +135,7 @@
       position: relative;
       background: c.$green;
       border-radius: 3px;
-      z-index: 1;
+      z-index: 99;
       transform-origin: 4px 0px;
       transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
         background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
@@ -139,11 +150,9 @@
 
   .menu {
     position: absolute;
+    left: -1rem;
     width: 80vw;
-    height: 100vh;
-    margin: -100px 0 0 -50px;
-    padding: 50px;
-    padding-top: 100px;
+    height: calc(100vh - 3rem + 5px);
     background: c.$black;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;

@@ -7,11 +7,10 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 0.5rem;
-    grid-row-gap: 0.5rem;
+    gap: 1rem;
     background-color: c.$black;
     color: c.$white;
-    margin: 1rem;
+    margin-top: 2rem;
 
     .grid-item {
       @include c.reading-font;
@@ -25,6 +24,11 @@
       &:hover {
         background-color: c.$bg-black;
       }
+    }
+
+    @media (max-width: c.$mobile) {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
     }
   }
 }

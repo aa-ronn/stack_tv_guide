@@ -39,16 +39,13 @@ const ScheduleList: FC = () => {
     return (
       <div className="schedule-list">
         <div className="loading">
-          <div className={`channel-name ${menuOpen ? "hidden" : ""}`}>
-            {params?.channelName}
-          </div>
           {menuOpen ? null : <Spinner isLoading={true} />}
         </div>
       </div>
     );
   } else {
     return (
-      <div className={`schedule-list-wrapper`}>
+      <div className={`schedule-list-wrapper ${menuOpen ? "hidden" : ""}`}>
         <div className="schedule-list">
           <div className={`channel-date-wrapper ${menuOpen ? "hidden" : ""}`}>
             <div className="channel-name">{params?.channelName}</div>

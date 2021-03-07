@@ -1,38 +1,44 @@
 @use "../../consts" as c;
 
 .schedule-list-wrapper {
-  max-width: 1200px;
   opacity: 1;
-  transition: opacity 1000ms ease;
 
   &.hidden {
     opacity: 0;
-    transition: opacity 1000ms ease;
+    z-index: -1;
   }
 
   .schedule-list {
-    font-family: "Roboto", sans-serif;
+    max-width: c.$tablet;
+    min-width: c.$tablet;
     display: flex;
     flex-direction: column;
     color: c.$white;
+    margin-top: -4rem;
+
+    @media (max-width: c.$tablet) {
+      min-width: calc(100vw - 1.5rem);
+    }
 
     .loading {
-      display: grid;
+      display: flex;
       justify-content: center;
+      align-content: center;
+      margin: 0;
       @include c.title-font;
       text-transform: capitalize;
       padding: 1rem;
     }
 
     .channel-date-wrapper {
-      z-index: 1;
       top: 3rem;
       padding-top: 1rem;
+      padding-bottom: 1rem;
       height: 6rem;
       position: sticky;
       background-color: c.$black;
       opacity: 1;
-      transition: opacity 600ms ease;
+      transition: opacity 300ms ease 400ms;
 
       .channel-name {
         @include c.title-font;
@@ -47,7 +53,8 @@
 
       &.hidden {
         opacity: 0;
-        visibility: hidden;
+        transition: opacity 300ms ease;
+        z-index: -1;
       }
     }
 
@@ -71,7 +78,7 @@
       top: 80%;
       justify-content: space-between;
       opacity: 1;
-      transition: opacity 300ms ease;
+      transition: opacity 300ms ease 300ms;
 
       animation: slide-apart 300ms ease;
 
@@ -92,7 +99,7 @@
       }
 
       .floating-button-left {
-        margin-left: 1rem;
+        margin-left: 0.5rem;
         height: 100%;
         width: 4rem;
 
@@ -196,12 +203,8 @@
       }
     }
   }
-}
 
-@media (max-width: c.$tablet) {
-  .schedule-list-wrapper {
-    max-width: 1200px;
-
+  @media (max-width: c.$mobile) {
     .schedule-list {
       .show-block {
         margin: 0%;
