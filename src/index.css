@@ -8,6 +8,7 @@ body {
   background-color: black;
   line-height: 1.5;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 @media (max-width: 500px) {

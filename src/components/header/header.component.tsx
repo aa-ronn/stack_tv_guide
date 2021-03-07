@@ -79,9 +79,9 @@ const Header: FC = () => {
             <p>
               <li onClick={() => handleNavigationClick("/ytv")}>YTV</li>
             </p>
-            <p>
+            {/* <p>
               <li onClick={() => handleNavigationClick("/about")}>About</li>
-            </p>
+            </p> */}
           </ul>
         </div>
       </nav>

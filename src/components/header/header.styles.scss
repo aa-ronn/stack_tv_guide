@@ -13,13 +13,17 @@
   .title {
     @include c.title-font;
     padding-left: 1rem;
-    margin: 0.5rem;
-    margin-left: 1rem;
+    margin: 0.7rem 0.5rem 0.5rem 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    z-index: 3;
+    z-index: 101;
     cursor: pointer;
+    background-color: c.$bg-black;
+
+    @media (max-width: c.$mobile) {
+      margin: 1.25rem 0.5rem 0.5rem 1rem;
+    }
 
     .green {
       color: c.$green;
@@ -39,6 +43,7 @@
       &.open {
         max-width: 90px;
         transition: max-width 0.2s;
+        position: static;
         &:after {
           transition: opacity 0.2s;
           opacity: 1;
@@ -66,6 +71,7 @@
     z-index: 100;
     -webkit-user-select: none;
     user-select: none;
+    background-color: c.$bg-black;
 
     a {
       text-decoration: none;
@@ -87,6 +93,8 @@
       opacity: 0;
       z-index: 100;
       -webkit-touch-callout: none;
+      background-color: c.$bg-black;
+
       &.open {
         ~ {
           span {
@@ -103,16 +111,13 @@
           }
           ul {
             transform: none;
-            top: 5px;
-
             li {
               cursor: pointer;
-              padding-left: 2.5rem;
               transition: padding-left 200ms ease;
 
               &:hover {
                 background-color: c.$bg-black;
-                padding-left: 3.5rem;
+                padding-left: 3rem;
                 transition: padding-left 200ms ease;
                 border-left: 1px solid c.$green;
               }
@@ -145,11 +150,9 @@
 
   .menu {
     position: absolute;
+    left: -1rem;
     width: 80vw;
-    height: 100vh;
-    margin: -100px 0 0 -50px;
-    padding: 50px;
-    padding-top: 100px;
+    height: calc(100vh - 3rem + 5px);
     background: c.$black;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;

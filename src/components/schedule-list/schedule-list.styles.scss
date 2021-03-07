@@ -1,14 +1,8 @@
 @use "../../consts" as c;
 
 .schedule-list-wrapper {
-  max-width: 800px;
-  min-width: 800px;
   opacity: 1;
   transition: opacity 1000ms ease;
-
-  @media (max-width: c.$tablet) {
-    min-width: 100%;
-  }
 
   &.hidden {
     opacity: 0;
@@ -16,11 +10,16 @@
   }
 
   .schedule-list {
-    font-family: "Roboto", sans-serif;
+    max-width: c.$tablet;
+    min-width: c.$tablet;
     display: flex;
     flex-direction: column;
     color: c.$white;
     margin-top: -4rem;
+
+    @media (max-width: c.$tablet) {
+      min-width: calc(100vw - 1.5rem);
+    }
 
     .loading {
       display: flex;
@@ -80,7 +79,7 @@
       top: 80%;
       justify-content: space-between;
       opacity: 1;
-      transition: opacity 300ms ease;
+      transition: opacity 300ms ease 300ms;
 
       animation: slide-apart 300ms ease;
 
@@ -101,7 +100,7 @@
       }
 
       .floating-button-left {
-        margin-left: 1rem;
+        margin-left: 0.5rem;
         height: 100%;
         width: 4rem;
 

@@ -100,7 +100,10 @@ export const AppProvider: FC = ({ children }) => {
           setDay(channel.dates_and_schedules[dayIndex + 1]);
           setDayIndex(dayIndex + 1);
         } else {
-          setContets("Sorry! No more days availiable. Check back tomorrow.", 1);
+          setContets(
+            "Sorry! No more days available. Check back tomorrow 👍.",
+            1
+          );
           toggleToast();
         }
       } else {
@@ -108,7 +111,7 @@ export const AppProvider: FC = ({ children }) => {
           setDay(channel.dates_and_schedules[dayIndex - 1]);
           setDayIndex(dayIndex - 1);
         } else {
-          setContets("Sorry! No more days availiable. Check back tomorrow.", 1);
+          setContets("No more days that way 😉.", 1);
           toggleToast();
         }
       }
