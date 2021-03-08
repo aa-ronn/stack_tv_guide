@@ -82,7 +82,7 @@ export const AppProvider: FC = ({ children }) => {
         .catch((message) => {
           setDay(null);
           setChannel(null);
-          setContets(message, 1);
+          setContets(message + " 😞", 1);
           toggleToast();
           result = message;
         });

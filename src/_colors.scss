@@ -1,8 +1,8 @@
-$green: #54b947;
-$green-d: #428f38;
+$green: var(--primary-color);
+$green-d: var(--primary-color-dark);
 $blue: #4782b9;
 $blue-d: #3a6a97;
 $red: #b00000;
-$black: #000;
-$bg-black: rgb(15, 15, 15);
-$white: #fff;
+$bg-color: var(--bg-color);
+$border-color: var(--border-color);
+$white: var(--font-color);

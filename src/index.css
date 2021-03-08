@@ -9,11 +9,36 @@ body {
   line-height: 1.5;
   box-sizing: border-box;
   overflow-x: hidden;
+  overflow-y: auto;
+}
+
+:root {
+  --primary-color: #54b947;
+  --primary-color-dark: #428f38;
+  --border-color: rgb(26, 26, 26);
+  --font-color: #fff;
+  --bg-color: #000;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--border-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
 }
 
 @media (max-width: 500px) {
   html {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  body::-webkit-scrollbar {
+    width: 3px;
   }
 }
 

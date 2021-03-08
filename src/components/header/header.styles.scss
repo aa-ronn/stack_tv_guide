@@ -1,7 +1,7 @@
 @use "../../consts" as c;
 
 .header {
-  background-color: c.$black;
+  background-color: c.$bg-color;
   color: c.$white;
   height: 3rem;
   width: 100%;
@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: row;
   position: sticky;
+  position: -webkit-sticky;
 
   .title {
     @include c.title-font;
@@ -19,7 +20,7 @@
     align-items: center;
     z-index: 101;
     cursor: pointer;
-    background-color: c.$bg-black;
+    background-color: c.$bg-color;
 
     @media (max-width: c.$mobile) {
       margin: 1.25rem 0.5rem 0.5rem 1rem;
@@ -71,7 +72,7 @@
     z-index: 100;
     -webkit-user-select: none;
     user-select: none;
-    background-color: c.$bg-black;
+    background-color: c.$bg-color;
 
     a {
       text-decoration: none;
@@ -93,7 +94,7 @@
       opacity: 0;
       z-index: 100;
       -webkit-touch-callout: none;
-      background-color: c.$bg-black;
+      background-color: c.$bg-color;
 
       &.open {
         ~ {
@@ -109,6 +110,7 @@
               transform: rotate(-45deg) translate(0, -1px);
             }
           }
+
           ul {
             transform: none;
             li {
@@ -116,10 +118,14 @@
               transition: padding-left 200ms ease;
 
               &:hover {
-                background-color: c.$bg-black;
-                padding-left: 3rem;
+                background-color: c.$border-color;
+                padding-left: 2.5rem;
                 transition: padding-left 200ms ease;
                 border-left: 1px solid c.$green;
+              }
+
+              &:active {
+                background-color: c.$green;
               }
             }
           }
@@ -152,8 +158,8 @@
     position: absolute;
     left: -1rem;
     width: 80vw;
-    height: calc(100vh - 3rem + 5px);
-    background: c.$black;
+    height: calc(100vh - 4rem + 5px);
+    background: c.$bg-color;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
@@ -161,9 +167,15 @@
     transition: transform 0.8s cubic-bezier(0.77, 0.2, 0.05, 1);
     overflow-y: auto;
     @include c.scrollable;
+
     li {
       padding: 10px 0;
       font-size: 22px;
+    }
+
+    &.closed {
+      overflow: hidden;
+      z-index: -1;
     }
   }
 }

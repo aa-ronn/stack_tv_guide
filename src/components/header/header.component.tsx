@@ -32,7 +32,7 @@ const Header: FC = () => {
           <span></span>
           <span></span>
           <span></span>
-          <ul className="menu">
+          <ul className={`menu ${menuOpen ? "" : "closed"}`}>
             <li onClick={() => handleNavigationClick("/")}>Home</li>
             <p>
               <li onClick={() => handleNavigationClick("/global")}>Global</li>

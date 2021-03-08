@@ -8,13 +8,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
-    background-color: c.$black;
+    background-color: c.$bg-color;
     color: c.$white;
     margin-top: 2rem;
 
     .grid-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       @include c.reading-font;
-      border: 1px solid c.$bg-black;
+      border: 1px solid c.$border-color;
       max-width: 8rem;
       height: 8rem;
       text-align: center;
@@ -22,7 +25,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: c.$bg-black;
+        background-color: c.$border-color;
       }
     }
 

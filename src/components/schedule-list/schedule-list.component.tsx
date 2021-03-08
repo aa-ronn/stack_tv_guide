@@ -24,7 +24,7 @@ const ScheduleList: FC = () => {
     };
 
     firstLoad();
-
+    window.scrollTo(0, 0);
     return () => {};
   }, [params.channelName]);
 
