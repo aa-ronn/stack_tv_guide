@@ -19,7 +19,6 @@ const ScheduleList: FC = () => {
   useEffect(() => {
     const firstLoad = () => {
       //TODO Get this useEffect to only call one time legally
-      console.log("Loaded - " + params.channelName);
       setupSchedulePage(params.channelName);
     };
 

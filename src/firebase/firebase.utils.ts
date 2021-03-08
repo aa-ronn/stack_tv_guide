@@ -89,12 +89,10 @@ export const getChannelSchedule = (channel: string): Promise<Channel> =>
             resolve(data);
           }
         } else {
-          console.log("Channel not found.");
           reject("Sorry, we don't have a schedule for that channel.");
         }
       })
       .catch((error) => {
-        console.log("Error getting document:", error);
         reject(error.message);
       });
   });

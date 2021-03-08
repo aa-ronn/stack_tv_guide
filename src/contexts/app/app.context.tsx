@@ -54,7 +54,6 @@ export const AppProvider: FC = ({ children }) => {
     let result = "";
 
     if (channel === null || channelName !== channel.name) {
-      console.log("Getting channel data");
       await getChannelSchedule(channelName)
         .then((receivedChannel) => {
           // save channel
@@ -70,7 +69,6 @@ export const AppProvider: FC = ({ children }) => {
               const day = receivedChannel.dates_and_schedules[index];
               const dayDate = new Date(day.date);
               if (dayDate.toDateString() === today.toDateString()) {
-                console.log(day);
                 setDay(day);
                 setDayIndex(index);
                 result = "";
