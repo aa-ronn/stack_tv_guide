@@ -1,6 +1,6 @@
 # Stack TV Guide
 
-React front end with a Firebase back end.
+React front end, Firebase back end, and Python Beautiful Soup for provider scraping.
 
 ## Check it out here
 
