@@ -34,7 +34,7 @@ body::-webkit-scrollbar-thumb {
 
 @media (max-width: 500px) {
   html {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   body::-webkit-scrollbar {

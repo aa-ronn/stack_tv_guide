@@ -2,6 +2,13 @@
 
 .home {
   max-width: 1200px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  .colophon {
+    color: #fff;
+    text-align: center;
+  }
 
   .home-grid {
     width: 100%;
@@ -11,6 +18,7 @@
     background-color: c.$bg-color;
     color: c.$white;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 
     .grid-item {
       display: flex;
@@ -18,14 +26,54 @@
       justify-content: center;
       @include c.reading-font;
       border: 1px solid c.$border-color;
-      max-width: 8rem;
       height: 8rem;
       text-align: center;
       vertical-align: middle;
       cursor: pointer;
+      padding-left: 1rem;
+      padding-right: 1rem;
 
       &:hover {
         background-color: c.$border-color;
+      }
+
+      &.tv-global {
+        background-color: c.$tv-global;
+      }
+      &.tv-history {
+        background-color: c.$tv-history;
+      }
+      &.tv-adult-swim {
+        background-color: c.$tv-adult-swim;
+      }
+      &.tv-teletoon {
+        background-color: c.$tv-teletoon;
+      }
+      &.tv-slice {
+        background-color: c.$tv-slice;
+      }
+      &.tv-show-case {
+        background-color: c.$tv-show-case;
+        color: #000000;
+      }
+      &.tv-hgtv {
+        background-color: c.$tv-hgtv;
+      }
+      &.tv-w {
+        background-color: c.$tv-w;
+      }
+      &.tv-treehouse {
+        background-color: c.$tv-treehouse;
+        color: #000000;
+      }
+      &.tv-food-network {
+        background-color: c.$tv-food-network;
+      }
+      &.tv-national-geographic {
+        background-color: c.$tv-national-geographic;
+      }
+      &.tv-ytv {
+        background-color: c.$tv-ytv;
       }
     }
 
